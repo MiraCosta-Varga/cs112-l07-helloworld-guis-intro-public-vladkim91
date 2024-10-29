@@ -34,7 +34,7 @@ public class HelloApplication extends Application implements EventHandler<Action
         //SETUP SCENE AND SHOW
         Scene scene = new Scene(layout, 300, 250); //layout, dimensions of window
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Hello World"); //setting title of main window
+        primaryStage.setTitle("Group #24 - Vladimir Kim"); //setting title of main window
         primaryStage.show();
     }
 
