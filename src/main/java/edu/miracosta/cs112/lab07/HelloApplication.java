@@ -1,17 +1,21 @@
 package edu.miracosta.cs112.lab07;//package name here depending on your IDE
 
-import javafx.application.Application;  //abstract class used for JavaFX GUI's
-import javafx.event.ActionEvent;              //class for GUI window
-import javafx.event.EventHandler;              //class for specific view in GUI window
-import javafx.scene.Scene;        //class for layout pane, organized top-to-bottom
-import javafx.scene.control.Button;      //class for label component
-import javafx.scene.control.Label;     //class for button component
+import javafx.application.Application;
+import javafx.event.ActionEvent;  //abstract class used for JavaFX GUI's
+import javafx.event.EventHandler;              //class for GUI window
+import javafx.scene.Scene;              //class for specific view in GUI window
+import javafx.scene.control.Button;        //class for layout pane, organized top-to-bottom
+import javafx.scene.control.Label;      //class for label component
+import javafx.scene.control.TextField;     //class for button component
 import javafx.scene.layout.VBox;       //interface for handling events
 import javafx.stage.Stage;        //class for type of event for action (like button or key pressed)
 
 public class HelloApplication extends Application implements EventHandler<ActionEvent>  { //inheriting core functionality + this class will handle events
     /*** GUI COMPONENTS ***/
     private Button button;
+    private TextField nameField;
+    private int pressCountButton = 0;
+    private Label message;
 
     /*** DRIVER main ***/
     public static void main(String[] args) {
@@ -43,6 +47,12 @@ public class HelloApplication extends Application implements EventHandler<Action
     public void handle(ActionEvent actionEvent) { //generic method used to handle when events occur (like handle button click)
         //good practice to identify source, in case you have multiple event types/sources
         if(actionEvent.getSource() == button) {
+            pressCountButton++;
+            String userName = nameField.getText();
+            if(userName.isEmpty()) {
+                userName = "User";
+            }
+            message.setText("Hi #" + pressCountButton + ", " + userName + "!");
             System.out.println("Hello, CS112");
         }
     }
