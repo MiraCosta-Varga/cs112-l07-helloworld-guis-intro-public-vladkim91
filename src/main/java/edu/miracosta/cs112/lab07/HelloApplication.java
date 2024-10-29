@@ -26,14 +26,16 @@ public class HelloApplication extends Application implements EventHandler<Action
     @Override
     public void start(Stage primaryStage) throws Exception{ //Application automatically calls this method to run (our) main javafx code. passes in primary stage (main window)
         //SETUP COMPONENTS
-        Label message = new Label("Hi, User!");
+        message = new Label("Hi, User!");
         button = new Button("Click me"); //or can set text using setText method separately
         button.setOnAction(this); //who the event handler is (which object/class should handle the event)
+        nameField = new TextField();
+        nameField.setPromptText("Enter your name");
 
         //ADD COMPONENTS
-        VBox layout = new VBox(); //simple layout, components are stacked on top of each other in added order
-        layout.getChildren().add(message);
-        layout.getChildren().add(button);
+        VBox layout = new VBox(10); //simple layout, components are stacked on top of each other in added order
+        layout.setPadding(new javafx.geometry.Insets(20));
+        layout.getChildren().addAll(nameField, button,message);
 
         //SETUP SCENE AND SHOW
         Scene scene = new Scene(layout, 300, 250); //layout, dimensions of window
